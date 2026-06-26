@@ -2,7 +2,17 @@
 
 Full Stack Developer portfolio. Monochrome theme, WebGL background and motion.
 
+**Live:** [itzsecretportfolio.vercel.app](https://itzsecretportfolio.vercel.app/#contact)
+
 **Stack:** Vite · Three.js (GLSL shader background) · GSAP (ScrollTrigger).
+
+---
+
+If you like this portfolio, consider leaving a **star** — it helps a lot and keeps me motivated to build more open projects.
+
+[![GitHub stars](https://img.shields.io/github/stars/itzSecretProject/portfolio?style=social)](https://github.com/itzSecretProject/portfolio/stargazers)
+
+---
 
 ## Run
 
@@ -39,7 +49,7 @@ portfolio/
 ├── index.html        # markup, content, SEO & security meta
 ├── vercel.json       # security headers (Vercel)
 ├── public/
-│   ├── logo.png      # your logo (transparent), favicon
+│   ├── logo.png      # logo (transparent), favicon
 │   ├── _headers      # security headers (Netlify/Cloudflare)
 │   ├── robots.txt
 │   └── sitemap.xml
@@ -52,8 +62,12 @@ portfolio/
 
 ## Customise
 
-- Text → `src/i18n.js` (per language). Email is `itzsecretproject@gmail.com`.
+- Text → `src/i18n.js` (per language).
 - Colors → `:root` in `src/style.css`.
 - Set your real domain in `index.html` (`canonical`, OG/Twitter URLs), `robots.txt`, `sitemap.xml`.
 
 Respects `prefers-reduced-motion`.
+
+## License
+
+Copyright (c) 2025 itzSecretProject. All rights reserved. See [LICENSE](./LICENSE).
