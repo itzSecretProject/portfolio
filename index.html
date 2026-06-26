@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- ===== Security ===== -->
+    <!-- Static site: no backend, no database, no SQL → SQL injection is impossible.
+         CSP locks down what can run/load; scripts only from our own origin (blocks injected/XSS scripts). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- ===== SEO ===== -->
+    <title>itz_Secret Project — Full Stack Developer | Web Design & Development</title>
+    <meta name="description" content="itz_Secret Project — Full Stack Developer. Custom websites with SEO, hosting and domain included. Free demo first: see your site live before you pay. From €200." />
+    <meta name="keywords" content="full stack developer, web design, web development, SEO, custom website, freelance developer, React, Next.js, hosting included, domain included" />
+    <meta name="author" content="itz_Secret Project" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://itzsecretproject.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="itz_Secret Project" />
+    <meta property="og:title" content="itz_Secret Project — Full Stack Developer" />
+    <meta property="og:description" content="Custom websites with SEO, hosting and domain included. Free demo first — see your site live before you pay." />
+    <meta property="og:image" content="https://itzsecretproject.com/logo.png" />
+    <meta property="og:url" content="https://itzsecretproject.com/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="itz_Secret Project — Full Stack Developer" />
+    <meta name="twitter:description" content="Custom websites with SEO, hosting and domain included. Free demo first." />
+    <meta name="twitter:image" content="https://itzsecretproject.com/logo.png" />
+
+    <link rel="icon" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <!-- Structured data for rich SEO results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "itz_Secret Project",
+      "description": "Full Stack Developer building custom websites with SEO, hosting and domain included.",
+      "url": "https://itzsecretproject.com/",
+      "image": "https://itzsecretproject.com/logo.png",
+      "email": "itzsecretproject@gmail.com",
+      "priceRange": "€200 - €250/mo",
+      "areaServed": "Worldwide",
+      "makesOffer": [
+        { "@type": "Offer", "name": "Free Demo", "price": "0", "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Website", "price": "200", "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Website + Care", "price": "200", "priceCurrency": "EUR" }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div id="loader">
+      <div class="loader-mark"><img src="/logo.png" alt="" /></div>
+      <div class="loader-bar"><span></span></div>
+    </div>
+
+    <!-- ===== Nav ===== -->
+    <header class="nav-wrap" id="nav">
+      <a class="brand" href="#home" data-magnetic aria-label="itz_Secret Project — home">
+        <img src="/logo.png" alt="itz_Secret Project logo" width="30" height="30" />
+        <span>itz_Secret</span>
+      </a>
+
+      <nav class="nav-pill" aria-label="Primary">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <a href="#home" class="active" data-i18n="nav.home">Home</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn btn-light hire-btn" href="#contact" data-magnetic data-i18n="nav.hire">Hire Me</a>
+        <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===== Mobile menu ===== -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <a href="#home" data-i18n="nav.home">Home</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+
+    <main>
+      <!-- ===== HERO ===== -->
+      <section id="home" class="hero">
+        <h1 class="hero-title">
+          <span class="line"><span data-i18n="hero.l1">FULL STACK</span></span>
+          <span class="line"><span data-i18n="hero.l2">DEVELOPER</span></span>
+        </h1>
+
+        <div class="hero-grid">
+          <div class="hero-intro reveal">
+            <h2 class="hero-name"><i class="spark"></i> <span data-i18n="hero.name">itz_Secret Project</span></h2>
+            <p class="hero-meta"><span id="age">14</span> <span data-i18n="hero.age">years old</span> · <span data-i18n="hero.role">Full Stack Developer</span></p>
+            <p data-i18n="hero.intro">Passionate Full Stack Developer crafting fast, reliable products end to end.</p>
+            <a class="btn btn-outline" href="#work" data-magnetic data-i18n="hero.cv">View Work</a>
+          </div>
+
+          <div class="hero-aside reveal">
+            <h3 class="hero-tag"><i class="spark"></i> <span data-i18n="hero.tag">Digital Craftsmanship</span></h3>
+            <p data-i18n="hero.aside">React, Next.js, Node, TypeScript, Postgres and a love for motion.</p>
+            <div class="stats">
+              <div class="stat">
+                <strong data-count="150" data-suffix="+">0</strong>
+                <span data-i18n="hero.stat1">Projects Shipped</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <strong data-count="99" data-suffix="%">0</strong>
+                <span data-i18n="hero.stat2">Client Satisfaction</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section id="about" class="section">
+        <div class="section-head">
+          <p class="eyebrow"><i class="spark"></i> <span data-i18n="about.eyebrow">About</span></p>
+          <h2 class="section-title reveal-up" data-i18n="about.title">
+            Engineering products that feel as good as they perform.
+          </h2>
+        </div>
+        <div class="stack-grid">
+          <article class="card tilt reveal-up">
+            <h3 data-i18n="about.c1t">Frontend</h3>
+            <p data-i18n="about.c1d">React, Next.js, TypeScript, GSAP & Three.js.</p>
+            <ul><li>React / Next.js</li><li>TypeScript</li><li>Tailwind / GSAP</li><li>WebGL / Three.js</li></ul>
+          </article>
+          <article class="card tilt reveal-up">
+            <h3 data-i18n="about.c2t">Backend</h3>
+            <p data-i18n="about.c2d">Node, Go and Python services with clean APIs.</p>
+            <ul><li>Node / Express</li><li>Go / Python</li><li>REST / GraphQL</li><li>Postgres / Redis</li></ul>
+          </article>
+          <article class="card tilt reveal-up">
+            <h3 data-i18n="about.c3t">Infra & DX</h3>
+            <p data-i18n="about.c3d">Shipping with confidence — CI/CD, containers, edge deploys.</p>
+            <ul><li>Docker / K8s</li><li>AWS / Vercel</li><li>CI/CD</li><li>Testing</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== WORK ===== -->
+      <section id="work" class="section">
+        <div class="section-head">
+          <p class="eyebrow"><i class="spark"></i> <span data-i18n="work.eyebrow">Selected Work</span></p>
+          <h2 class="section-title reveal-up" data-i18n="work.title">Recent projects.</h2>
+        </div>
+        <div class="work-grid">
+          <article class="work-card reveal-up" data-magnetic>
+            <div class="work-meta"><span>01</span><span data-i18n="work.c1">Dashboard</span></div>
+            <h3 data-i18n="work.t1">SaaS Panel</h3>
+            <p data-i18n="work.d1">A full SaaS management panel with real-time data.</p>
+            <div class="tags"><span>Next.js</span><span>Postgres</span><span>Auth</span></div>
+          </article>
+          <article class="work-card reveal-up" data-magnetic>
+            <div class="work-meta"><span>02</span><span data-i18n="work.c2">Healthcare</span></div>
+            <h3 data-i18n="work.t2">Dentist Website</h3>
+            <p data-i18n="work.d2">Modern site for a dental clinic with online booking.</p>
+            <div class="tags"><span>React</span><span>Booking</span><span>SEO</span></div>
+          </article>
+          <article class="work-card reveal-up" data-magnetic>
+            <div class="work-meta"><span>03</span><span data-i18n="work.c3">Local Business</span></div>
+            <h3 data-i18n="work.t3">Butcher Shop Website</h3>
+            <p data-i18n="work.d3">Website for a butcher shop with catalogue and orders.</p>
+            <div class="tags"><span>Next.js</span><span>Catalogue</span><span>WhatsApp</span></div>
+          </article>
+          <article class="work-card reveal-up" data-magnetic>
+            <div class="work-meta"><span>04</span><span data-i18n="work.c4">Beauty</span></div>
+            <h3 data-i18n="work.t4">Hair & Nails Salon</h3>
+            <p data-i18n="work.d4">Site for a hair salon & manicure studio with appointments.</p>
+            <div class="tags"><span>React</span><span>Appointments</span><span>SEO</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== PRICING ===== -->
+      <section id="pricing" class="section pricing">
+        <h2 class="pricing-bg-title" data-parallax data-i18n="nav.pricing">Pricing</h2>
+        <div class="section-head">
+          <p class="eyebrow"><i class="spark"></i> <span data-i18n="price.eyebrow">Plans & Pricing</span></p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Free demo -->
+          <article class="price-card reveal-up">
+            <div class="glow"></div>
+            <header>
+              <p class="plan-name" data-i18n="price.p1name">Free Demo</p>
+              <h3 class="price"><span data-i18n="price.p1price">Free</span><span class="per" data-i18n="price.p1per">/no commitment</span></h3>
+            </header>
+            <ul class="features">
+              <li><i class="check"></i> <span data-i18n="price.p1f1">A complete demo of your site</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p1f2">See it live before paying</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p1f3">No card, no commitment</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p1f4">If you love it, you keep it</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p1f5">Personalised to your brand</span></li>
+            </ul>
+            <a class="btn btn-dark full" href="#contact" data-i18n="price.p1cta">Get the Demo</a>
+          </article>
+
+          <!-- Website -->
+          <article class="price-card reveal-up">
+            <div class="glow"></div>
+            <header>
+              <p class="plan-name" data-i18n="price.p2name">Website</p>
+              <h3 class="price"><span data-i18n="price.p2price">€200</span><span class="per" data-i18n="price.p2per">/one-time</span></h3>
+            </header>
+            <ul class="features">
+              <li><i class="check"></i> <span data-i18n="price.p2f1">Full custom website built for you</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p2f2">Domain included (.com / .es)</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p2f3">Hosting included</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p2f4">SEO-optimised & responsive</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p2f5">Delivered ready to go live</span></li>
+            </ul>
+            <a class="btn btn-dark full" href="#contact" data-i18n="price.p2cta">Get Started</a>
+          </article>
+
+          <!-- Website + Care (featured) -->
+          <article class="price-card featured reveal-up">
+            <div class="glow"></div>
+            <header>
+              <p class="plan-name" data-i18n="price.p3name">Website + Care</p>
+              <h3 class="price"><span data-i18n="price.p3price">€200</span><span class="per" data-i18n="price.p3per">+ €50/mo</span></h3>
+            </header>
+            <ul class="features">
+              <li><i class="check"></i> <span data-i18n="price.p3f1">Everything in Website, plus:</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p3f2">Monthly SEO & marketing</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p3f3">Updates: images, fonts, text</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p3f4">Bug fixes handled by me</span></li>
+              <li><i class="check"></i> <span data-i18n="price.p3f5">Domain + hosting + care</span></li>
+            </ul>
+            <a class="btn btn-light full" href="#contact" data-i18n="price.p3cta">Get Started</a>
+          </article>
+        </div>
+
+        <div class="billing reveal">
+          <span data-i18n="price.billing">Billed monthly · cancel anytime</span>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section id="contact" class="section contact">
+        <p class="eyebrow"><i class="spark"></i> <span data-i18n="contact.eyebrow">Let's build</span></p>
+        <h2 class="contact-title" data-i18n="contact.title">Have a project in mind?</h2>
+        <a class="btn btn-light btn-lg" href="mailto:itzsecretproject@gmail.com" data-magnetic data-i18n="contact.cta">
+          Start a conversation
+        </a>
+        <div class="contact-links">
+          <a href="mailto:itzsecretproject@gmail.com" data-i18n="contact.l1">Email</a>
+          <a href="https://github.com/itzSecretProject" target="_blank" rel="noopener" data-i18n="contact.l2">GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="brand">
+        <img src="/logo.png" alt="itz_Secret Project logo" width="24" height="24" />
+        <span>itz_Secret Project</span>
+      </div>
+      <p>© <span id="year"></span> itz_Secret Project — <span data-i18n="hero.role">Full Stack Developer</span></p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
